@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<template id="akcja_worksheet_template">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+				<t t-call="web.internal_layout">
+					<div clas="page">
+						<t t-call="mrp_sale_worksheet.header"/>
+						<t t-call="mrp_sale_worksheet.order_lines"/>
+						<t t-call="mrp_sale_worksheet.routes"/>
+					</div>
+				</t>
+			</t>
+		</t>
+	</template>
+
+	<template id="routes">
+		<table class="table table-bordered table-sm">
+			<!--
+			<tr>
+				<th style="width: 10mm"></th>
+				<th style="width: 200mm" colspan="5">Laser</th>
+			</tr>
+			-->
+			<tr >
+				<th style="width: 2px">Nr</th>
+				<th style="width: 10px">Element</th>
+				<th style="width: 30px">Uwagi</th>
+				<th style="width: 30px">Podpis</th>
+				<th style="width: 30px">Data</th>
+				<th style="width: 30px">Ilość</th>
+			</tr>
+			
+			<tr >
+				<td>1</td> <td>płytka kwadratowa</td> <td></td> <td></td> <td></td> <td></td>
+			</tr>
+			<tr >
+				<td>2</td> <td>płytka okrągła</td> <td></td> <td></td> <td></td> <td></td>
+			</tr>
+			<tr >
+				<td>2</td> <td>jakiś inny fajny kształt</td> <td></td> <td></td> <td></td> <td></td>
+			</tr>
+			<!--<tr><th>Krawędziarka</th></tr>-->
+			<tr >
+				<th>Nr</th> <th>Element</th> <th>Uwagi</th> <th>Podpis</th> <th>Data</th> <th>Ilość</th>
+			</tr>
+			<tr >
+				<td>2</td> <td>płytka okrągła</td> <td></td> <td></td> <td></td> <td></td>
+			</tr>
+			<tr>
+				<td>2</td> <td>jakiś inny fajny kształt</td> <td></td> <td></td> <td></td> <td></td>
+			</tr>
+			<tr >
+				<td>1</td> <td>płytka kwadratowa</td> <td></td> <td></td> <td></td> <td></td>
+			</tr>
+			<!--<tr><th>Spawarka</th></tr>-->
+			<tr >
+				<th>Nr</th> <th>Element</th> <th>Uwagi</th> <th>Podpis</th> <th>Data</th> <th>Ilość</th>
+			</tr>
+			<tr >
+				<td>2</td> <td>płytka okrągła</td> <td></td> <td></td> <td></td> <td></td>
+			</tr>
+			<tr>
+				<td>2</td> <td>jakiś inny fajny kształt</td> <td></td> <td></td> <td></td> <td></td>
+			</tr>
+			<tr >
+				<td>1</td> <td>płytka kwadratowa</td> <td></td> <td></td> <td></td> <td></td>
+			</tr>
+		</table>
+	</template>
+
+	<template id="order_lines">
+		<table class="table table-bordered table-sm">
+			<tr>
+				<th style="width: 70mm;" class="text-center">Nazwa</th>
+				<th style="width: 70mm;" class="text-center">Ilość</th>
+				<th style="width: 70mm;" class="text-center">Rysunek</th>
+			</tr>
+			<t t-foreach="o.order_line" t-as="line">
+				<!--<t t-debug="pdb" />-->
+				<tr>
+					<td style="width: 70mm;"><span t-field="line.name"/></td>
+					<td style="width: 70mm;" class="text-right"><span t-field="line.product_uom_qty"/> <span t-field="line.product_uom"/></td>
+					<td style="width: 70mm;" class="text-right">127b</td>
+				</tr>
+			</t>
+		</table>
+	</template>
+
+	<template id="header">
+		<table class="table table-bordered table-sm">
+			<tr>
+				<td style="width: 50mm"><strong>data wydruku:</strong><br/><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/></td>
+				<td style="width: 100mm" class="text-center" colspan="2"><h2>Karta Technologiczna</h2></td>
+				<td style="width: 50mm"><strong>nr zam:</strong><br/><span t-field="o.name"/></td>
+			</tr>
+			<tr>
+				<td><strong>planowana data real:</strong><br/><span t-field="o.expected_date"/></td>
+				<td><strong>data przyjęcia:</strong><br/><span t-field="o.confirmation_date"/></td>
+				<td><strong>kod klienta:</strong><br/><span t-field="o.partner_id"/></td>
+				<td><strong>ilość wyr. gotowych:</strong><br/><t t-esc="sum(l.product_uom_qty for l in o.order_line)"/></td>
+			</tr>
+		</table>	
+	</template>
+
+	<report id="akcja_worksheet_report"
+		string="Worksheet report"
+		model="sale.order"
+		report_type="qweb-html"
+		name="mrp_sale_worksheet.akcja_worksheet_template"/>
+</odoo>
