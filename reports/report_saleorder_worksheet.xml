@@ -6,9 +6,9 @@
 			<t t-foreach="docs" t-as="o">
 				<t t-call="web.internal_layout">
 					<div clas="page">
-						<t t-call="mrp_sale_worksheet.header"/>
-						<t t-call="mrp_sale_worksheet.order_lines"/>
-						<t t-call="mrp_sale_worksheet.routes"/>
+						<t t-call="saleorder_mrp.header"/>
+						<t t-call="saleorder_mrp.order_lines"/>
+						<t t-call="saleorder_mrp.routes"/>
 					</div>
 				</t>
 			</t>
@@ -17,19 +17,17 @@
 
 	<template id="routes">
 		<table class="table table-bordered table-sm">
-			<!--
 			<tr>
-				<th style="width: 10mm"></th>
-				<th style="width: 200mm" colspan="5">Laser</th>
+				<th>></th>
+				<th>Laser</th>
 			</tr>
-			-->
 			<tr >
-				<th style="width: 2px">Nr</th>
-				<th style="width: 10px">Element</th>
-				<th style="width: 30px">Uwagi</th>
-				<th style="width: 30px">Podpis</th>
-				<th style="width: 30px">Data</th>
-				<th style="width: 30px">Ilość</th>
+				<th style="width: 10px">Nr</th>
+				<th style="width: 350px" class="text-center">Element</th>
+				<th style="width: 90px">Uwagi</th>
+				<th style="width: 90px">Podpis</th>
+				<th style="width: 90px">Data</th>
+				<th style="width: 90px">Ilość</th>
 			</tr>
 			
 			<tr >
@@ -39,33 +37,33 @@
 				<td>2</td> <td>płytka okrągła</td> <td></td> <td></td> <td></td> <td></td>
 			</tr>
 			<tr >
-				<td>2</td> <td>jakiś inny fajny kształt</td> <td></td> <td></td> <td></td> <td></td>
+				<td>3</td> <td>jakiś inny fajny kształt</td> <td></td> <td></td> <td></td> <td></td>
 			</tr>
-			<!--<tr><th>Krawędziarka</th></tr>-->
+			<tr><th>></th><th>Krawędziarka</th></tr>
 			<tr >
 				<th>Nr</th> <th>Element</th> <th>Uwagi</th> <th>Podpis</th> <th>Data</th> <th>Ilość</th>
 			</tr>
 			<tr >
-				<td>2</td> <td>płytka okrągła</td> <td></td> <td></td> <td></td> <td></td>
+				<td>1</td> <td>płytka okrągła</td> <td></td> <td></td> <td></td> <td></td>
 			</tr>
 			<tr>
 				<td>2</td> <td>jakiś inny fajny kształt</td> <td></td> <td></td> <td></td> <td></td>
 			</tr>
 			<tr >
-				<td>1</td> <td>płytka kwadratowa</td> <td></td> <td></td> <td></td> <td></td>
+				<td>3</td> <td>płytka kwadratowa</td> <td></td> <td></td> <td></td> <td></td>
 			</tr>
-			<!--<tr><th>Spawarka</th></tr>-->
+			<tr><th>></th><th>Spawarka</th></tr>
 			<tr >
 				<th>Nr</th> <th>Element</th> <th>Uwagi</th> <th>Podpis</th> <th>Data</th> <th>Ilość</th>
 			</tr>
 			<tr >
-				<td>2</td> <td>płytka okrągła</td> <td></td> <td></td> <td></td> <td></td>
+				<td>1</td> <td>płytka okrągła</td> <td></td> <td></td> <td></td> <td></td>
 			</tr>
 			<tr>
 				<td>2</td> <td>jakiś inny fajny kształt</td> <td></td> <td></td> <td></td> <td></td>
 			</tr>
 			<tr >
-				<td>1</td> <td>płytka kwadratowa</td> <td></td> <td></td> <td></td> <td></td>
+				<td>3</td> <td>płytka kwadratowa</td> <td></td> <td></td> <td></td> <td></td>
 			</tr>
 		</table>
 	</template>
@@ -105,8 +103,8 @@
 	</template>
 
 	<report id="akcja_worksheet_report"
-		string="Worksheet report"
+		string="Karta Technologiczna"
 		model="sale.order"
 		report_type="qweb-html"
-		name="mrp_sale_worksheet.akcja_worksheet_template"/>
+		name="saleorder_mrp.akcja_worksheet_template"/>
 </odoo>
