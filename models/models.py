@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
-
 from odoo import models, fields, api
+import logging
+_logger = logging.getLogger(__name__) 
+class SaleOrder(models.Model):
+    _inherit = 'sale.order'
+    rysunek = fields.Char('Rysunek', required = False)
 
-# class mrp_sale_worksheet(models.Model):
+#    mo_ids = fields.One2many('mrp.production',
 #     _name = 'mrp_sale_worksheet.mrp_sale_worksheet'
 
 #     name = fields.Char()

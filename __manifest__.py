@@ -21,7 +21,8 @@
 
         'license': 'AGPL-3',
         'data': [
-            'reports/report_saleorder_worksheet.xml'
+            'reports/report_saleorder_worksheet.xml',
+            'views/view_saleorder.xml'
             ],
         'demo': [
             ],
