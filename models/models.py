@@ -6,6 +6,21 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
     rysunek = fields.Char('Rysunek', required = False)
 
+    @api.multi
+    def get_mos(self):
+        record_collection=[]
+        record_collection=self.env['mrp.production'].search([('origin','=',self.name)])
+#        record_collection=self.env['mrp.production'].search([])
+        return record_collection;
+
+    @api.multi
+    def get_routes(self):
+        record_collection=[]
+        record_collection=self.env['mrp.production'].search([('origin','=',self.name)])
+#        record_collection=self.env['mrp.production'].search([])
+        return record_collection;
+
+
 #    mo_ids = fields.One2many('mrp.production',
 #     _name = 'mrp_sale_worksheet.mrp_sale_worksheet'
 

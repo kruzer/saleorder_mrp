@@ -7,13 +7,43 @@
 				<t t-call="web.internal_layout">
 					<div clas="page">
 						<t t-call="saleorder_mrp.header"/>
-						<t t-call="saleorder_mrp.order_lines"/>
+						<t t-call="saleorder_mrp.order_lines_mo"/>
 						<t t-call="saleorder_mrp.routes"/>
 					</div>
 				</t>
 			</t>
 		</t>
 	</template>
+
+	<template id="order_lines_mo">
+		<table class="table table-bordered table-sm">
+			<tr>
+				<th class="text-center">Produkt</th>
+				<th class="text-center">BOM</th>
+				<th class="text-center">Marszruta</th>
+				<th class="text-center">ZP</th>
+				<th class="text-center">Ilość</th>
+				<th class="text-center">Rysunek</th>
+			</tr>
+			<t t-set="mos" t-value="o.get_mos()"/>
+			<t t-foreach="mos" t-as="line">
+				<!--<t t-debug="pdb" />-->
+				<tr>
+					<td><span t-field="line.product_id"/></td>
+					<td><span t-field="line.bom_id"/></td>
+					<td><span t-field="line.routing_id"/></td>
+					<td><span t-field="line.name"/></td>
+					<td><span t-field="line.product_qty"/></td>
+					<td>
+						<!--
+						<span t-field="line.product_uom_qty"/> <span t-field="line.product_uom"/>
+-->
+					</td>
+				</tr>
+			</t>
+		</table>
+	</template>
+
 
 	<template id="routes">
 		<table class="table table-bordered table-sm">
@@ -67,7 +97,7 @@
 			</tr>
 		</table>
 	</template>
-
+	
 	<template id="order_lines">
 		<table class="table table-bordered table-sm">
 			<tr>
