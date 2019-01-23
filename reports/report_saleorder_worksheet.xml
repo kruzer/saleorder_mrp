@@ -65,7 +65,7 @@
 					<td>1.</td>
 					<td><span t-field="line.name"/></td>
 					<td></td>
-					<td><span t-field="line.qty_production"/></td>
+					<td><span t-field="line.qty_production"/> <span t-field="line.product_uom_id"/></td>
 					<td></td>
 					<td></td>
 				</tr>
