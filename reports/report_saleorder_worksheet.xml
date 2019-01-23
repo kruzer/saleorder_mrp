@@ -8,7 +8,7 @@
 					<div clas="page">
 						<t t-call="saleorder_mrp.header"/>
 						<t t-call="saleorder_mrp.order_lines_mo"/>
-						<t t-call="saleorder_mrp.routes"/>
+						<t t-call="saleorder_mrp.routes2"/>
 					</div>
 				</t>
 			</t>
@@ -39,6 +39,35 @@
 						<span t-field="line.product_uom_qty"/> <span t-field="line.product_uom"/>
 -->
 					</td>
+				</tr>
+			</t>
+		</table>
+	</template>
+	
+	<template id="routes2">
+		<table class="table table-bordered table-sm">
+			<t t-set="wos" t-value="o.get_wo()"/>
+			<t t-foreach="wos" t-as="line">
+				<tr>
+					<th>></th>
+					<th><span t-field="line.workcenter_id"/></th>
+				</tr>
+				<tr >
+					<th style="width: 10px">Nr</th>
+					<th style="width: 350px" class="text-center">Element</th>
+					<th style="width: 90px">Uwagi</th>
+					<th style="width: 90px">Ilość</th>
+					<th style="width: 90px">Podpis</th>
+					<th style="width: 90px">Data</th>
+				</tr>
+
+				<tr>
+					<td>1.</td>
+					<td><span t-field="line.name"/></td>
+					<td></td>
+					<td><span t-field="line.qty_production"/></td>
+					<td></td>
+					<td></td>
 				</tr>
 			</t>
 		</table>

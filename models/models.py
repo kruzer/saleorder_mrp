@@ -14,11 +14,13 @@ class SaleOrder(models.Model):
         return record_collection;
 
     @api.multi
-    def get_routes(self):
-        record_collection=[]
-        record_collection=self.env['mrp.production'].search([('origin','=',self.name)])
-#        record_collection=self.env['mrp.production'].search([])
-        return record_collection;
+    def get_wo(self):
+        manufacturing_orders=[]
+        work_orders=[]
+        manufacturing_orders=self.env['mrp.production'].search([('origin','=',self.name)])
+        for order in manufacturing_orders:
+            work_orders += order.workorder_ids
+        return work_orders;
 
 
 #    mo_ids = fields.One2many('mrp.production',
